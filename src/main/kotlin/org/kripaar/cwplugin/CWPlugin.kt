@@ -1,6 +1,7 @@
 package org.kripaar.cwplugin
 
 import org.bukkit.plugin.java.JavaPlugin
+import org.kripaar.cwplugin.BedWars.GameController
 import org.kripaar.cwplugin.RunEscape.ArrowListener
 import org.kripaar.cwplugin.RunEscape.RegisterEnderChest
 import org.kripaar.cwplugin.RunEscape.RemoveEnderChest
@@ -22,10 +23,14 @@ class CWPlugin : JavaPlugin() {
     }
 
     override fun onDisable() {
+        super.onDisable()
     }
 
     private fun registerCommands() {
-        this.getCommand("register").executor = RegisterEnderChest()
-        this.getCommand("remove_ec").executor = RemoveEnderChest()
+        this.getCommand("kripaars-re-register").executor = RegisterEnderChest()
+        this.getCommand("kripaars-re-remove").executor = RemoveEnderChest()
+        this.getCommand("kripaars-bw-start").executor = GameController()
+        this.getCommand("kripaars-ts-test").executor = TestCommand()
+//        this.getCommand("CW:BW:end").executor = GameController()
     }
 }

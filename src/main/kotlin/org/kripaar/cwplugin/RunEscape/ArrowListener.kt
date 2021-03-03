@@ -1,6 +1,7 @@
 package org.kripaar.cwplugin.RunEscape
 
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.block.Block
@@ -18,6 +19,7 @@ import java.lang.Thread.sleep
 import java.sql.DriverManager
 import java.sql.ResultSet
 import java.sql.Statement
+import java.time.Duration
 import java.time.LocalDate
 import java.time.LocalDateTime
 
@@ -41,9 +43,6 @@ class ArrowListener : Listener {
             return
         }
 
-        player.openInventory(player.enderChest)
-        player.closeInventory()
-
         if (list[player] == null) list[player] = mutableListOf()
 
         var final_: PlayerAndEnderChest? = null
@@ -53,7 +52,6 @@ class ArrowListener : Listener {
                 final_ = p
             }
         }
-
 
         if (final_ == null) { // Check if player had been clicked this block
             // This code will run because
@@ -67,13 +65,12 @@ class ArrowListener : Listener {
         }
 
         if (!final_.addItems()) {
-            player.sendMessage("你還需要等待才可以獲得")
+            player.sendMessage("你還需要等待${ChatColor.GREEN}${3 - final_.getDuration().seconds}${ChatColor.WHITE}秒才可以獲得")
             event.isCancelled = true
             return
         }
         player.inventory.addItem(ItemStack(Material.ARROW, 3))
-        if (player.health + 2 >= 20) player.health = 20.0
-        else player.health += 2
+        player.health = if (player.health + 2 >= 20) 20.0 else player.health + 2
 
         player.sendMessage("你獲得3支箭矢和2點血量")
         event.isCancelled = true
@@ -85,7 +82,6 @@ class ArrowListener : Listener {
 
         fun addItems (): Boolean {
             if (!checkIfExpired()) return false
-            print(checkIfExpired())
             ++times
             lastGet = LocalDateTime.now()
             return true
@@ -94,6 +90,10 @@ class ArrowListener : Listener {
         private fun checkIfExpired(): Boolean {
             if (lastGet == null) return true
             return lastGet?.plusSeconds(3)!!.isBefore(LocalDateTime.now())
+        }
+
+        fun getDuration(): Duration {
+            return Duration.between(lastGet, LocalDateTime.now())
         }
     }
 }

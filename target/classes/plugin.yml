@@ -2,9 +2,18 @@ name: CWPlugin
 version: 1.0
 main: org.kripaar.cwplugin.CWPlugin
 commands:
-  register:
+  kripaars-ts-test:
+    description: Testing Command
+    usage: /kripaars-ts-test
+  kripaars-re-register:
     description: Save Block at the position sender looking at.
-    usage: /register
-  remove_ec:
+    usage: /kripaars-re-register
+  kripaars-re-remove:
     description: Unregister Block at the position sender looking at.
-    usage: /remove_ec
+    usage: /kripaars-re-remove
+  kripaars-bw-start:
+    description: Start a Bed War game.
+    usage: /kripaars-bw-start
+#  CW:BW:end:
+#    description: End a Bed War Game.
+#    usage: /CW:BW:end
