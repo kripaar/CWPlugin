@@ -1,0 +1,1 @@
+move /Y target\mainModule-1.0-SNAPSHOT.jar d:\CubewondersServer\plugins

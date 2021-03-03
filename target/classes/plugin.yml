@@ -1,0 +1,10 @@
+name: CWPlugin
+version: 1.0
+main: org.kripaar.cwplugin.CWPlugin
+commands:
+  register:
+    description: Save Block at the position sender looking at.
+    usage: /register
+  remove_ec:
+    description: Unregister Block at the position sender looking at.
+    usage: /remove_ec
