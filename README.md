@@ -10,4 +10,4 @@ The goal of this game is either kill all the survivor or escape from cactcher.
 
 
 ## Module - BedWars
-BedWars -> In Development
+GameSession -> In Development

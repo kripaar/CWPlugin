@@ -14,6 +14,6 @@ commands:
   kripaars-bw-start:
     description: Start a Bed War game.
     usage: /kripaars-bw-start
-#  CW:BW:end:
-#    description: End a Bed War Game.
-#    usage: /CW:BW:end
+  kripaars-bw-stop:
+    description: End a Bed War Game.
+    usage: /kripaars-bw-stop

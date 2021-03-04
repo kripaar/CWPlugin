@@ -30,7 +30,7 @@ class CWPlugin : JavaPlugin() {
         this.getCommand("kripaars-re-register").executor = RegisterEnderChest()
         this.getCommand("kripaars-re-remove").executor = RemoveEnderChest()
         this.getCommand("kripaars-bw-start").executor = GameController()
+        this.getCommand("kripaars-bw-stop").executor = this.getCommand("kripaars-bw-start").executor
         this.getCommand("kripaars-ts-test").executor = TestCommand()
-//        this.getCommand("CW:BW:end").executor = GameController()
     }
 }
